@@ -15,3 +15,11 @@ Secure Software Assignment 2
 ### Visitor
 - Be able to create an account
 - Be able to login
+
+### To Do list for tomorrow
+- Create login page with functionality
+- Create account page
+- account maintenance page
+- logout button
+- search function
+- post template html page
