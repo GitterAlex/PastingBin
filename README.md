@@ -19,7 +19,7 @@ Secure Software Assignment 2
 ### To Do list for tomorrow
 - Create login page with functionality
 - Create account page
-- account maintenance page
+- account maintenance page 
 - logout button
 - search function
-- post template html page
+- post template html page (done)
