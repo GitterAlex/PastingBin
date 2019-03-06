@@ -1,11 +1,11 @@
-{% extends "frontpage.html" %}
+{% extends "webpages/frontpage.html" %}
 
  {% block content %}
     <div class="container">
       <div class="jumbotron">
         <h3>Create New Post</h3>
       <form>
-        Post Title: </br>
+        Post Title: <br>
         <input type=text name="title" placeholder="your title here">
       <p>
       <textarea rows="10" cols="80" placeholder="your text here"></textarea>
@@ -17,10 +17,6 @@
         </div>
       </div>
     </main>
-
-    <footer class="container">
-      <p>&copy; Dumpster in Hawaii 2018-2019</p>
-    </footer>
 {% endblock content%}
 
     <!-- Bootstrap core JavaScript

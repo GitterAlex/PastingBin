@@ -17,9 +17,10 @@ Secure Software Assignment 2
 - Be able to login
 
 ### To Do list for tomorrow
-- Create login page with functionality
-- Create account page
-- account maintenance page 
-- logout button
-- search function
+- Create login page with functionality (partially done)
+- "Create account" page
+- account maintenance page
+- logout button (partially done)
+- search function (delayed)
 - post template html page (done)
+- change debug to off
