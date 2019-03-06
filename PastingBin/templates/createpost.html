@@ -29,16 +29,20 @@
   <main role="main">
 
     <!-- Main createpost for a primary marketing message or call to action -->
-        <p>New Post</p>
-          <form>
-            <p>
-      <label>Text Area</label>
-      <textarea rows="10" cols="10">Your text here</textarea>
-            </p>
-          </form>
-          <br>
-          <p><a class="btn btn-secondary" href="#" role="button">Post &raquo;</a></p>
 
+    <div class="container">
+      <div class="jumbotron">
+        <h3>Create New Post</h3>
+      <form>
+      <p>
+      <textarea rows="10" cols="80">Your text here</textarea>
+      </p>
+      <input type="checkbox" name="private" value="privacy"> Private<br>
+      Expiration date: <input type="date" name="expiry">
+          </form>
+          <p><a class="btn btn-secondary" href="#" role="button">Post &raquo;</a></p>
+        </div>
+      </div>
     </main>
 
     <footer class="container">
