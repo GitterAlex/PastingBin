@@ -7,3 +7,6 @@ def index(request):
 
 def createpost(request):
     return render(request, 'webpages/createpost.html')
+
+def createaccount(request):
+    return render(request, 'webpages/createaccount.html')
