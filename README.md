@@ -18,7 +18,7 @@ Secure Software Assignment 2
 
 ### To Do list for tomorrow
 - Create login page with functionality (partially done)
-- "Create account" page
+- "Create account" page (done)
 - account maintenance page
 - logout button (partially done)
 - search function (delayed)
