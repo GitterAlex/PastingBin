@@ -11,5 +11,5 @@ class AccountCreation(UserCreationForm):
         last_name = forms.CharField(max_length=50)
 
 class Meta:
-    model = user
+    model = User
     fields = ('username','password','email','first_name','last_name')

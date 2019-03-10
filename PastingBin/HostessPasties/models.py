@@ -6,7 +6,7 @@ import uuid
 # Create your models here.
 from django.contrib.auth.models import User, AbstractUser # Required to assign User as a creator of a post
 
-class user(AbstractUser):
+class User(AbstractUser):
     email = models.EmailField(max_length=254, help_text='Required. Input a valid email address.')
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
