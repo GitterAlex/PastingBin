@@ -10,12 +10,15 @@ def frontpage(request):
 def createpost(request):
     return render(request, 'webpages/createpost.html')
 def dashboard(request):
-    return render(request, 'webpages/dashboard.html')
+    if request.user.is_authenticated:
+        return render(request, 'webpages/dashboard.html')
+    else:
+        return redirect('/HostessPasties/')
 #create account defnition
 def createaccount(request):
     #the request must be a POST
     if request.user.is_authenticated:
-        return redirect('/HostessPasties/dashboard')
+        return dashboard(request)
     else:
         if request.method =='POST' :
             #references the account creation form to give inputs

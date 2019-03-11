@@ -1,7 +1,11 @@
 {% extends "webpages/frontpage.html" %}
 
 {% block content %}
-<h2>Welcome (firstname of user)</h2>
+<div class="container">
+  <div class="jumbotron">
+        <h3>Welcome, {{ user.username }}. Here are some of your top posts</h3>
+  </div>
+</div>
 {% endblock content %}
 
 {% block footer%}
