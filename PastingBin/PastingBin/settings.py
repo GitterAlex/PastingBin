@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'HostessPasties.apps.HostesspastiesConfig'
 ]
-AUTH_USER_MODEL = 'HostessPasties.User'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -69,8 +69,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'PastingBin.wsgi.application'
-
-
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
@@ -103,7 +101,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/HostessPasties'
+LOGOUT_REDIRECT_URL = '/HostessPasties'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
