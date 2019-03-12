@@ -5,7 +5,10 @@ from .admin import AccountCreationForm
 
 #frontpage rendering
 def frontpage(request):
-    return render(request,'webpages/frontpage.html')
+    if request.user.is_authenticated:
+        return render(request, 'webpages/dashboard.html')
+    else:
+        return render(request,'webpages/frontpage.html')
 #Create post function
 def createpost(request):
     return render(request, 'webpages/createpost.html')
