@@ -22,7 +22,7 @@ def createpost(request):
                 post.owner = request.user
                 form2.save()
                 context = {'form2': form2}
-                return render(request, 'webpages/dashboard.html', context)
+                return redirect('/HostessPasties/dashboard/')
                 #if not reload the create account page
             else:
                 context = {'form2': form2}
