@@ -101,8 +101,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
-LOGIN_REDIRECT_URL = '/HostessPasties'
-LOGOUT_REDIRECT_URL = '/HostessPasties'
+LOGIN_REDIRECT_URL = '/HostessPasties/dashboard'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
