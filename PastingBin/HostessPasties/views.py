@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .admin import AccountCreationForm
 from .forms import PostCreation
+from .models import PostTable
 #frontpage rendering
 def frontpage(request):
     if request.user.is_authenticated:
@@ -34,12 +35,9 @@ def createpost(request):
         return redirect('/HostessPasties')
 
 def getPosts(request):
-    if request.user.is_authenticated:
-        if request.method =='POST' :
-            fetchPForm = PostTable.objects.filter(owner=request.user.id)
-            return render(request, 'webpages/dashboard.html', {'fetchPForm': fetchPForm})
-        else:
-            return render(request, 'webpages/dashboard.html')
+        fetchPForm = PostTable.objects.filter(owner=request.user.id)
+        return render(request, 'webpages/dashboard.html', {'fetchPForm': fetchPForm})
+
 
 
 

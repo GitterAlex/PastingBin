@@ -15,5 +15,5 @@ class PostTable(models.Model):
     private = models.BooleanField(default=0)
     pasteContent = models.CharField(max_length=2000)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title

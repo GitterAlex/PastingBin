@@ -1,7 +1,7 @@
 # Byte-compiled / optimized / DLL files
-HostessPasties/__pycache__/
-HostessPasties/migrations/
-PastingBin/__pycache__/
+*/__pycache__/
+*/migrations/
+
 *.pyc
 
 # C extensions
