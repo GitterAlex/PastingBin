@@ -36,8 +36,9 @@ def createpost(request):
 
 def dashboard(request):
     userposts = PostTable.objects.filter(owner=request.user.id)
+    publicposts = PostTable.objects.filter(private=0)
     if request.user.is_authenticated:
-        user_posts_html = {'userposts': userposts}
+        user_posts_html = {'userposts': userposts, 'publicposts': publicposts}
         return render(request, 'webpages/dashboard.html', user_posts_html)
     else:
         return redirect('/HostessPasties/')

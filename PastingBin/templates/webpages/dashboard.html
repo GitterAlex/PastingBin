@@ -10,7 +10,7 @@
           {% for post in userposts %}
           <div class="row">
             <div class="col-md-4"><h5>{{ post.title }}</h5></div>
-            <div class="col-md-4">{{ post.pasteContent }}</div>
+            <div class="col-md">{{ post.pasteContent }}</div>
           </div>
           <hr>
           {% endfor %}
@@ -20,15 +20,16 @@
 
 <div class="container">
   <!-- Example row of columns -->
-  <div class="row">
-    <div class="col-md-4">
       <h3>Top 10 most recent posts:</h3>
-      <p>This would be the list of top 10 posts</p>
-      <br>
-    </div>
-    <div class="col-md-4">
-      <h4>This is where the posts you select would be</h4>
-    </div>
+      <div class="container">
+        {% for pubpost in publicposts %}
+        <div class="row">
+          <div class="col-md-4"><h5>{{ pubpost.title }}</h5></div>
+          <div class="col-md">{{ pubpost.pasteContent }}</div>
+        </div>
+        <hr>
+        {% endfor %}
+      </div>
   </div>
 {% endblock content %}
 
