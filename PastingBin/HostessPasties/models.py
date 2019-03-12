@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 
 class PostTable(models.Model):
     postID = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text="Unique ID for this post")
+    title =  models.CharField(max_length=100)
     expiry = models.DateField(default=datetime.date.today)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     private = models.BooleanField(default=0)

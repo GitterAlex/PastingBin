@@ -10,6 +10,10 @@
       <h2> You are already logged in </h2>
       {% else %}
       <h1 class="display-3">Who are you?</h1>
+      {% if request.user.is_staff %}
+      <h2> please use the administrator portal to login </h2>
+      <a href="/admin/">Staff Login<span class="sr-only">(current)</span></a>
+      {% endif %}
     </div>
   </div>
   <div class="container">
