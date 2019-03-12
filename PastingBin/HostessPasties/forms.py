@@ -15,6 +15,7 @@ class Meta:
 
 class PostCreation(forms.ModelForm):
     pasteContent = forms.CharField(widget=forms.Textarea)
+    expiry = forms.DateField(widget=forms.SelectDateWidget)
 
     class Meta:
         model = PostTable

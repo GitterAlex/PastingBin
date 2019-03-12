@@ -7,12 +7,7 @@
     <form method = post>
       {% csrf_token %}
 
-      <table>
-      <tr><td>Title: </td><td>{{form2.title}}</td></tr>
-      <tr><td>Paste Content: </td><td>{{form2.pasteContent}}</td></tr>
-      <tr><td>Post Expiry: </td><td><input type="date" name="expire" value="{{form2.expiry|date:"d/m/Y"}}" required=True></td></tr>
-      <tr><td>Private: </td><td>{{form2.private}}</tr>
-      </table>
+      {{form2.as_p}}
       <br>
       <button class="btn btn-secondary" type="submit">Post</button>
     </form>

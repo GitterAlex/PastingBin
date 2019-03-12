@@ -33,6 +33,15 @@ def createpost(request):
     else:
         return redirect('/HostessPasties')
 
+def getPosts(request):
+    if request.user.is_authenticated:
+        if request.method =='POST' :
+            fetchPForm = PostTable.objects.filter(owner=request.user.id)
+            return render(request, 'webpages/dashboard.html', {'fetchPForm': fetchPForm})
+        else:
+            return render(request, 'webpages/dashboard.html')
+
+
 
 def dashboard(request):
     if request.user.is_authenticated:
