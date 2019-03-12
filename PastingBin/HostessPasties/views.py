@@ -7,7 +7,7 @@ from .models import PostTable
 #frontpage rendering
 def frontpage(request):
     if request.user.is_authenticated:
-        return render(request, 'webpages/dashboard.html')
+        return redirect('dashboard/')
     else:
         return render(request,'webpages/frontpage.html')
 #Create post function
@@ -34,16 +34,11 @@ def createpost(request):
     else:
         return redirect('/HostessPasties')
 
-def getPosts(request):
-        fetchPForm = PostTable.objects.filter(owner=request.user.id)
-        return render(request, 'webpages/dashboard.html', {'fetchPForm': fetchPForm})
-
-
-
-
 def dashboard(request):
+    userposts = PostTable.objects.filter(owner=request.user.id)
     if request.user.is_authenticated:
-        return render(request, 'webpages/dashboard.html')
+        user_posts_html = {'userposts': userposts}
+        return render(request, 'webpages/dashboard.html', user_posts_html)
     else:
         return redirect('/HostessPasties/')
 #create account defnition

@@ -5,11 +5,16 @@
   <div class="jumbotron">
         <p><a class="btn btn-primary" href="/HostessPasties/createpost" role="button">Create a Post &raquo;</a></p>
         <h3>Here are your posts:</h3>
-        <ul>
-          {% for post in fetchPForm %}
-          <li>{{post.title}}</li>
+
+        <div class="container">
+          {% for post in userposts %}
+          <div class="row">
+            <div class="col-md-4"><h5>{{ post.title }}</h5></div>
+            <div class="col-md-4">{{ post.pasteContent }}</div>
+          </div>
+          <hr>
           {% endfor %}
-        </ul>
+        </div>
   </div>
 </div>
 

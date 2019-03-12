@@ -1,6 +1,7 @@
 #urls.py
 from django.urls import path
 from django.contrib import admin
+from django.conf.urls import url
 
 from . import views
 
@@ -10,5 +11,4 @@ urlpatterns = [
     path('createpost/', views.createpost),
     path('createaccount/', views.createaccount),
     path('dashboard/', views.dashboard)
-
 ]
