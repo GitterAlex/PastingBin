@@ -3,9 +3,23 @@
 {% block content %}
 <div class="container">
   <div class="jumbotron">
-        <h3>Welcome, {{ user.username }}. Here are some of your top posts</h3>
+        <p><a class="btn btn-primary" href="/HostessPasties/createpost" role="button">Create a Post &raquo;</a></p>
+        <h3>Here are your posts:</h3>
   </div>
 </div>
+
+<div class="container">
+  <!-- Example row of columns -->
+  <div class="row">
+    <div class="col-md-4">
+      <h3>Top 10 most recent posts:</h3>
+      <p>This would be the list of top 10 posts</p>
+      <br>
+    </div>
+    <div class="col-md-4">
+      <h4>This is where the posts you select would be</h4>
+    </div>
+  </div>
 {% endblock content %}
 
 {% block footer%}

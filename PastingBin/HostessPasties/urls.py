@@ -7,8 +7,8 @@ from . import views
 urlpatterns = [
     path('', views.frontpage, name='frontpage'),
     path('admin/', admin.site.urls),
-    path('createpost', views.createpost),
-    path('createaccount', views.createaccount),
-    path('dashboard', views.dashboard)
+    path('createpost/', views.createpost),
+    path('createaccount/', views.createaccount),
+    path('dashboard/', views.dashboard)
 
 ]
