@@ -6,13 +6,18 @@
     <h3>Create New Post</h3>
     <form method = post>
       {% csrf_token %}
-      {{form2.as_p}}
-      <button type="submit">Post</button>
+
+      <table>
+      <tr><td>Title: </td><td>{{form2.title}}</td></tr>
+      <tr><td>Paste Content: </td><td>{{form2.pasteContent}}</td></tr>
+      <tr><td>Post Expiry: </td><td><input type="date" name="expire" value="{{form2.expiry|date:"d/m/Y"}}" required=True></td></tr>
+      <tr><td>Private: </td><td>{{form2.private}}</tr>
+      </table>
+      <br>
+      <button class="btn btn-secondary" type="submit">Post</button>
     </form>
   </div>
 </div>
-<div class="container">
-  <div class="jumbotron">
 {% endblock content%}
 
 <!-- Bootstrap core JavaScript

@@ -13,11 +13,9 @@ class Meta:
     model = User
     fields = ('username','email','first_name','last_name')
 
-class PostCreation(forms.Form):
-    title = forms.CharField(max_length=100)
-    expiry = forms.DateField(initial=datetime.date.today)
-    private = forms.BooleanField(required=False)
-    pasteContent = forms.CharField(max_length=2000)
-class Meta:
-    model = PostTable
-    fields = ('title','expiry','private','pasteContent')
+class PostCreation(forms.ModelForm):
+    pasteContent = forms.CharField(widget=forms.Textarea)
+
+    class Meta:
+        model = PostTable
+        fields = ('title','expiry','private','pasteContent')
