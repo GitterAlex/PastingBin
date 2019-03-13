@@ -1,7 +1,7 @@
 #views.py
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .admin import AccountCreationForm
+from .forms import AccountCreation
 from .forms import PostCreation
 from .models import PostTable
 #frontpage rendering
@@ -12,6 +12,8 @@ def frontpage(request):
         return render(request,'webpages/frontpage.html')
 #Create post function
 def createpost(request):
+    if request.user.is_staff or request.user.is_superuser:
+        return redirect('/HostessPasties/admin')
     if request.user.is_authenticated:
         if request.method =='POST' :
             #references the account creation form to give inputs
@@ -35,6 +37,9 @@ def createpost(request):
         return redirect('/HostessPasties')
 
 def dashboard(request):
+    if request.user.is_staff or request.user.is_superuser:
+        return redirect('/HostessPasties/admin')
+
     userposts = PostTable.objects.filter(owner=request.user.id)
     publicposts = PostTable.objects.filter(private=0)
     if request.user.is_authenticated:
@@ -50,7 +55,7 @@ def createaccount(request):
     else:
         if request.method =='POST' :
             #references the account creation form to give inputs
-            form = AccountCreationForm(request.POST)
+            form = AccountCreation(request.POST)
             #If all inputs are valid save to the database and redirect to home page
             if form.is_valid():
                 form.save()
@@ -60,6 +65,6 @@ def createaccount(request):
                 context = {'form': form}
                 return render(request, 'webpages/createaccount.html', context)
         else:
-            form = AccountCreationForm()
+            form = AccountCreation()
             context = {'form': form}
             return render(request, 'webpages/createaccount.html', context)
