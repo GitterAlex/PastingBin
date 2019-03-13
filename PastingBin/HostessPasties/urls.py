@@ -10,7 +10,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('createpost/', views.createpost),
     path('createaccount/', views.createaccount),
-    path('dashboard/', views.dashboard)
+    path('dashboard/', views.dashboard, name='dashboard')
 ]
 urlpatterns += [
     path('<int:pk>/update/', views.UserUpdate.as_view(), name='user_update'),
