@@ -9,8 +9,10 @@
       <table>
       {{ form.as_table }}
       </table>
-      <input type="submit" value="Submit">
-      <p align='right'><a class="btn btn-secondary" href="/HostessPasties/{{user.id}}/delete/" role="button">Delete User &raquo;</a></p>
+      <div class="row">
+          <div class="col-md"><input class="btn btn-primary" type="submit" value="Submit"></div>
+          <div class="col-md"><a class="btn btn-secondary" href="/HostessPasties/{{user.id}}/delete/" role="button">Delete User &raquo;</a></div>
+          </div>
     </form>
   </div>
 </div>
