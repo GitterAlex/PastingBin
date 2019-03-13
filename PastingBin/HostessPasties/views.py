@@ -4,6 +4,10 @@ from django.http import HttpResponse
 from .forms import AccountCreation
 from .forms import PostCreation
 from .models import PostTable
+from django.views.generic.edit import UpdateView, DeleteView
+from django.urls import reverse_lazy
+from django.contrib.auth.models import User
+
 #frontpage rendering
 def frontpage(request):
     if request.user.is_authenticated:
@@ -68,3 +72,13 @@ def createaccount(request):
             form = AccountCreation()
             context = {'form': form}
             return render(request, 'webpages/createaccount.html', context)
+
+class UserUpdate(UpdateView):
+    model = User
+    fields = ['username', 'password', 'email', 'first_name', 'last_name']
+    template_name = 'webpages/user_form.html'
+    success_url = reverse_lazy('dashboard')
+class UserDelete(DeleteView):
+    model = User
+    template_name = 'webpages/user_confirm_delete.html'
+    success_url = reverse_lazy('frontpage')
