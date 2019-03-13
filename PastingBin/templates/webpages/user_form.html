@@ -3,12 +3,30 @@
 {% block content %}
 <div class="container">
   <div class="jumbotron">
-    <h3>Account Signup</h3>
+    <h3>Account Update</h3>
     <form action="" method="post">
       {% csrf_token %}
       <table>
-      {{ form.as_table }}
-      </table>
+        <tr>
+          <th>Username:</th>
+          <th>{{ form.username }}</th>
+        </tr>
+
+        <tr>
+          <th>email:</th>
+          <th>{{ form.email }}</th>
+        </tr>
+
+        <tr>
+          <th>First name:</th>
+          <th>{{ form.first_name }}</th>
+        </tr>
+
+        <tr>
+          <th>Last name:</th>
+          <th>{{ form.last_name }}</th>
+        </tr>
+        </table>
       <div class="row">
           <div class="col-md"><input class="btn btn-primary" type="submit" value="Submit"></div>
           <div class="col-md"><a class="btn btn-secondary" href="/HostessPasties/{{user.id}}/delete/" role="button">Delete User &raquo;</a></div>
