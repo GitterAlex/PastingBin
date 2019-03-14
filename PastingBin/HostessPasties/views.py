@@ -12,6 +12,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 from django.contrib.postgres.search import SearchVector
 from django import forms
+from django.db.models import Q
 
 #frontpage rendering
 def frontpage(request):
@@ -125,7 +126,7 @@ class PostView(DetailView):
 
     def get_queryset(self):
         if self.request.user.is_authenticated:
-            return PostTable.objects.filter(owner=self.request.user.id)
+            return PostTable.objects.filter(Q(owner=self.request.user.id) | Q(private=0))
         else:
             return PostTable.objects.filter(private=0)
 def search(request):
