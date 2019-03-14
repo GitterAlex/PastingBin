@@ -1,8 +1,10 @@
 {% extends "webpages/frontpage.html" %}
 
 {% block content %}
+
 <div class="container">
   <div class="jumbotron">
+    {% if user.is_authenticated %}
     <h2 class="display-4">Editing post: {{ posttable.title }}</h2>
 
     <div class="main">
@@ -21,8 +23,10 @@
           <div class="col-md"><input class="btn btn-secondary" type="submit" value="Delete Post"></div>
         </form>
       </div>
+      {% else %}
+      <h2 class="display-4">You don't have access to this page</h2>
+      {% endif %}
     </div>
   </div>
 </div>
-
 {% endblock content %}
