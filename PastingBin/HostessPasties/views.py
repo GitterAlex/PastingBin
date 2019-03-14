@@ -110,3 +110,8 @@ class PostUpdate(UpdateView):
     form_class = PostCreation
     template_name = 'webpages/posttable_form.html'
     success_url = reverse_lazy('dashboard')
+
+class PostDelete(DeleteView):
+    model = PostTable
+    template_name = 'webpages/posttable_confirm_delete.html'
+    success_url = reverse_lazy('frontpage')
