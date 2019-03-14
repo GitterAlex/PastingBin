@@ -122,9 +122,8 @@ class PostView(DetailView):
     pk_url_kwarg = 'pk'
     template_name = 'webpages/posttable_view.html'
 
-    def is_viewable(self, request, *args, **kwargs):
+    def get_queryset(self):
         if self.request.user.is_authenticated:
-            queryset = PostTable.objects.filter(owner=self.request.user.id)
+            return PostTable.objects.filter(owner=self.request.user.id)
         else:
-            queryset = PostTable.objects.filter(private=0)
-        return queryset
+            return PostTable.objects.filter(private=0)
