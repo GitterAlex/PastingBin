@@ -1,0 +1,22 @@
+{% extends "webpages/frontpage.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="jumbotron">
+    <h2 class="display-4">Editing post: {{ post.title }}</h2>
+
+    <div class="main">
+      <form action="" method="post">
+        {% csrf_token %}
+
+        {{form.as_p}}
+
+        <div class="row">
+          <div class="col-md"><input class="btn btn-primary" type="submit" value="Submit"></div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

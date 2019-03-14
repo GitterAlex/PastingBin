@@ -12,6 +12,7 @@ class PostTable(models.Model):
     title =  models.CharField(max_length=100)
     expiry = models.DateField(default=datetime.date.today)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    #postshares = models.ManyToManyField(User, blank=True, related_name='postshares')
     private = models.BooleanField(default=0)
     pasteContent = models.CharField(max_length=2000)
 
