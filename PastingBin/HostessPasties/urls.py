@@ -15,4 +15,5 @@ urlpatterns = [
 urlpatterns += [
     path('<int:pk>/update/', views.UserUpdate.as_view(), name='user_update'),
     path('<int:pk>/delete/', views.UserDelete.as_view(), name='user_delete'),
+    path('<pk>/postupdate/', views.PostUpdate.as_view(), name='post_update'),
 ]

@@ -7,6 +7,7 @@ from .models import PostTable
 from django.views.generic.edit import UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.models import User
+from django import forms
 
 #frontpage rendering
 def frontpage(request):
@@ -82,3 +83,9 @@ class UserDelete(DeleteView):
     model = User
     template_name = 'webpages/user_confirm_delete.html'
     success_url = reverse_lazy('frontpage')
+
+class PostUpdate(UpdateView):
+    model = PostTable
+    fields = ['postID','title','expiry','private','pasteContent']
+    template_name = 'webpages/posttable_form.html'
+    success_url = reverse_lazy('dashboard')

@@ -1,0 +1,40 @@
+{% extends "webpages/frontpage.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="jumbotron">
+    <h2 class="display-4">Editing post: {{ post.title }}</h2>
+
+    <div class="main">
+      <h3>User Information</h3>
+      <form action="" method="post">
+        {% csrf_token %}
+
+        <table>
+          <tr>
+            <th>Title:</th>
+            <th>{{ form.title }}</th>
+          </tr>
+          <tr>
+            <th>Post content:</th>
+            <th><textarea rows="4" cols="50">{{ form.pasteContent }}</textarea></th>
+          </tr>
+          <tr>
+            <th>Privacy:</th>
+            <th>{{ form.private }}</th>
+          </tr>
+          <tr>
+            <th>Expiry:</th>
+            <th>{{ form.expiry }}</th>
+          </tr>
+        </table>
+
+        <div class="row">
+          <div class="col-md"><input class="btn btn-primary" type="submit" value="Submit"></div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
