@@ -87,7 +87,6 @@ class UserDelete(DeleteView):
     template_name = 'webpages/user_confirm_delete.html'
     success_url = reverse_lazy('frontpage')
 
-<<<<<<< HEAD
 def change_password(request):
     if request.user.is_authenticated:
         if request.method == 'POST':
@@ -106,10 +105,8 @@ def change_password(request):
             return render(request, 'webpages/change_password.html', context)
     else:
         return redirect('/HostessPasties/')
-=======
 class PostUpdate(UpdateView):
     model = PostTable
     form_class = PostCreation
     template_name = 'webpages/posttable_form.html'
     success_url = reverse_lazy('dashboard')
->>>>>>> b2a0e5b8df68d8a12b73fe93fff9ff45345b4003
