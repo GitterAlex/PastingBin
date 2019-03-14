@@ -10,6 +10,7 @@ from django.contrib import messages
 from django.views.generic import UpdateView, DeleteView, DetailView
 from django.urls import reverse_lazy
 from django.contrib.auth.models import User
+from django.contrib.postgres.search import SearchVector
 from django import forms
 
 #frontpage rendering
@@ -127,3 +128,13 @@ class PostView(DetailView):
             return PostTable.objects.filter(owner=self.request.user.id)
         else:
             return PostTable.objects.filter(private=0)
+def search(request):
+    if request.method == 'GET':
+        post_content = request.GET.get('q')
+        queryset = PostTable.objects.annotate(search=SearchVector('title','pasteContent')).filter(search=post_content)
+        user = User.objects.annotate(search=SearchVector('id')).filter(search=queryset)
+        context = {'post': queryset, 'user':user}
+        return render(request, 'webpages/search.html', context)
+    else:
+        context = {}
+        return render(request, 'webpages/search.html', context)

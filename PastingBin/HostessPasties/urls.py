@@ -12,7 +12,8 @@ urlpatterns = [
     path('createpost/', views.createpost),
     path('createaccount/', views.createaccount),
     path('dashboard/', views.dashboard, name='dashboard'),
-    path('change_password/', views.change_password, name='changepassword')
+    path('change_password/', views.change_password, name='changepassword'),
+    path('search/', views.search, name='search')
 ]
 urlpatterns += [
     path('<int:pk>/update/', views.UserUpdate.as_view(), name='user_update'),

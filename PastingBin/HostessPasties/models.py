@@ -4,6 +4,7 @@ from django.urls import reverse
 import datetime
 import uuid
 from django.utils.crypto import get_random_string
+from django.contrib.postgres.search import SearchVectorField
 from django.contrib.auth.models import User
 # Create your models here.
 

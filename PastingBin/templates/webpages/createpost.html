@@ -6,7 +6,6 @@
     <h3>Create New Post</h3>
     <form method = post>
       {% csrf_token %}
-
       {{form2.as_p}}
       <br>
       <button onclick="confirm()" class="btn btn-secondary" type="submit">Post</button>

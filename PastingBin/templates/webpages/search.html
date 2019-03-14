@@ -1,0 +1,16 @@
+{% extends "webpages/frontpage.html" %}
+{% block content %}
+<div class="container">
+<div class="jumbotron">
+{% if post %}
+{% for each_post in post %}
+  <p>{{each_post.title}}</p>
+  <p>{{each_post.pasteContent}}</p>
+  {% for each_user in user %}
+  by: <p>{each_user.first_name} {each_user.last_name}</p>
+  {% endfor %}
+{% endfor %}
+{% endif %}
+</div>
+</div>
+{% endblock %}
