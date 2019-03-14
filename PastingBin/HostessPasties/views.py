@@ -4,6 +4,9 @@ from django.http import HttpResponse
 from .forms import AccountCreation
 from .forms import PostCreation
 from .models import PostTable
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
+from django.contrib import messages
 from django.views.generic.edit import UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.models import User
@@ -82,3 +85,22 @@ class UserDelete(DeleteView):
     model = User
     template_name = 'webpages/user_confirm_delete.html'
     success_url = reverse_lazy('frontpage')
+
+def change_password(request):
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            form = PasswordChangeForm(request.user, request.POST)
+            if form.is_valid():
+                user = form.save()
+                #update_session_auth_hash(request, user)
+                messages.success(request, 'Password Change Successful')
+                return redirect('/HostessPasties/')
+            else:
+                messages.error(request, 'There was something wrong with changing the password. Please try again.')
+                return redirect('changepassword')
+        else:
+            form = PasswordChangeForm(request.user)
+            context = {'form': form}
+            return render(request, 'webpages/change_password.html', context)
+    else:
+        return redirect('/HostessPasties/')
