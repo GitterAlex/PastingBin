@@ -3,9 +3,9 @@
 {% block content %}
 <div class="container">
   <div class="jumbotron">
-<h1 class="display-4">Delete Author</h1>
+<h1 class="display-4">Delete Post</h1>
 
-<p>Are you sure you want to delete the user: {{ user.username }}?</p>
+<p>Are you sure you want to delete the post: {{ post.title }}?</p>
 
 <form action="" method="POST">
   {% csrf_token %}
