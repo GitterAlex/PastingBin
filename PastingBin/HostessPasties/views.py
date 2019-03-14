@@ -7,7 +7,7 @@ from .models import PostTable
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
-from django.views.generic import UpdateView, DeleteView, ListView
+from django.views.generic import UpdateView, DeleteView, DetailView
 from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 from django import forms
@@ -116,8 +116,10 @@ class PostDelete(DeleteView):
     template_name = 'webpages/posttable_confirm_delete.html'
     success_url = reverse_lazy('frontpage')
 
-class PostView(ListView):
+class PostView(DetailView):
     model = PostTable
     context_object_name = 'post_list'
+    pk_url_kwarg = 'pk'
     queryset = PostTable.objects.filter(private=0)
+
     template_name = 'webpages/posttable_view.html'

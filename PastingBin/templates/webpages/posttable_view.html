@@ -3,9 +3,8 @@
 <div class="jumbotron">
   <div class="container">
     <p>Your post:</p>
-    {%for post in post_list %}
-    <p>{{ post.title }}</p>
-    {% endfor %}
+    <p>{{ post_list.title }}</p>
+    <p>{{ post_list.pasteContent }}</p>
   </div>
 </div>
 {% endblock content %}
