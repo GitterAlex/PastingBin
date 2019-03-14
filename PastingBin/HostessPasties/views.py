@@ -86,6 +86,6 @@ class UserDelete(DeleteView):
 
 class PostUpdate(UpdateView):
     model = PostTable
-    fields = ['postID','title','expiry','private','pasteContent']
+    form_class = PostCreation
     template_name = 'webpages/posttable_form.html'
     success_url = reverse_lazy('dashboard')
