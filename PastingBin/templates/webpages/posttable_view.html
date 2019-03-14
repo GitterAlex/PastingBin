@@ -1,0 +1,11 @@
+{% extends "webpages/frontpage.html" %}
+{% block content %}
+<div class="jumbotron">
+  <div class="container">
+    <p>Your post:</p>
+    {%for post in post_list %}
+    <p>{{ post.title }}</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}

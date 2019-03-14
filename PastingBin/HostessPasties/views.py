@@ -7,7 +7,7 @@ from .models import PostTable
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
-from django.views.generic.edit import UpdateView, DeleteView
+from django.views.generic import UpdateView, DeleteView, ListView
 from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 from django import forms
@@ -49,7 +49,7 @@ def dashboard(request):
         return redirect('/HostessPasties/admin')
 
     userposts = PostTable.objects.filter(owner=request.user.id)
-    publicposts = PostTable.objects.filter(private=0)
+    publicposts = PostTable.objects.filter(private=0)[:10]
     if request.user.is_authenticated:
         user_posts_html = {'userposts': userposts, 'publicposts': publicposts}
         return render(request, 'webpages/dashboard.html', user_posts_html)
@@ -115,3 +115,9 @@ class PostDelete(DeleteView):
     model = PostTable
     template_name = 'webpages/posttable_confirm_delete.html'
     success_url = reverse_lazy('frontpage')
+
+class PostView(ListView):
+    model = PostTable
+    context_object_name = 'post_list'
+    queryset = PostTable.objects.filter(private=0)
+    template_name = 'webpages/posttable_view.html'
