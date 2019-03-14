@@ -2,9 +2,14 @@
 {% block content %}
 <div class="jumbotron">
   <div class="container">
-    <p>Your post:</p>
-    <p>{{ post_list.title }}</p>
-    <p>{{ post_list.pasteContent }}</p>
+    <h1 class="display-4">{{ post_list.title }}</h1>
+    <hr>
+      <div class="col-md">{{ post_list.pasteContent }}</div>
   </div>
 </div>
+<div class="container">
+  <h3 class="display-5">RAW Post</h3>
+  <textarea style="width:100%;">{{ post_list.pasteContent }}</textarea>
+  </div>
+  <hr>
 {% endblock content %}

@@ -27,7 +27,7 @@
       <div class="container">
         {% for pubpost in publicposts|slice:":10" %}
         <div class="row">
-          <div class="col-md-4"><h5>{{ pubpost.title }}</h5></div>
+          <div class="col-md-4"><h5><a href="/HostessPasties/{{pubpost.postID}}/">{{ pubpost.title }}</a></h5></div>
           <div class="col-md">{{ pubpost.pasteContent }}</div>
         </div>
         <hr>
