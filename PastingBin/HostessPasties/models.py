@@ -7,6 +7,7 @@ from django.utils.crypto import get_random_string
 from django.contrib.postgres.search import SearchVectorField
 from django.contrib.auth.models import User
 from django.db import IntegrityError
+from fernet_fields import EncryptedTextField
 # Create your models here.
 
 class PostTable(models.Model):
@@ -16,7 +17,7 @@ class PostTable(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     postshares = models.ManyToManyField(User, blank=True, related_name='postshares')
     private = models.BooleanField(default=0)
-    pasteContent = models.CharField(max_length=2000)
+    pasteContent = EncryptedTextField(default='')
 
     def get(self, request, *args, **kwargs):
         file = self.get_object()
