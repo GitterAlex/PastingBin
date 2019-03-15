@@ -16,8 +16,8 @@ urlpatterns = [
     path('search/', views.search, name='search')
 ]
 urlpatterns += [
-    path('<int:pk>/update/', views.UserUpdate.as_view(), name='user_update'),
-    path('<int:pk>/delete/', views.UserDelete.as_view(), name='user_delete'),
+    url(r'^update/', views.UserUpdate.as_view(), name='user_update'),
+    url(r'^delete/', views.UserDelete.as_view(), name='user_delete'),
     path('<pk>/postdelete/', views.PostDelete.as_view(), name='post_delete'),
     path('<pk>/postupdate/', views.PostUpdate.as_view(), name='post_update'),
     path('<pk>/', views.PostView.as_view(), name='post_view')

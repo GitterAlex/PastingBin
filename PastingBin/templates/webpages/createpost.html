@@ -8,11 +8,8 @@
       {% csrf_token %}
       {{form2.as_p}}
       <br>
-      <button onclick="confirm()" class="btn btn-secondary" type="submit">Post</button>
+      <button class="btn btn-secondary" type="submit">Post</button>
     </form>
-    <div class="alert alert-success">
-      <strong>Post Created!</strong>
-    </div>
   </div>
 </div>
 {% endblock content%}

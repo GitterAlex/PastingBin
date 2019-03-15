@@ -4,7 +4,7 @@
 
 <div class="container">
   <div class="jumbotron">
-    {% if user.is_authenticated %}
+    {% if user.is_authenticated and user == posttable.owner%}
     <h2 class="display-4">Editing post: {{ posttable.title }}</h2>
 
     <div class="main">

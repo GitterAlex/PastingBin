@@ -84,10 +84,17 @@ class UserUpdate(UpdateView):
     fields = ['username', 'password', 'email', 'first_name', 'last_name']
     template_name = 'webpages/user_form.html'
     success_url = reverse_lazy('dashboard')
+
+    def get_object(self):
+        return self.request.user
+
 class UserDelete(DeleteView):
     model = User
     template_name = 'webpages/user_confirm_delete.html'
     success_url = reverse_lazy('frontpage')
+
+    def get_object(self):
+        return self.request.user
 
 def change_password(request):
     if request.user.is_authenticated:
@@ -129,13 +136,13 @@ class PostView(DetailView):
             return PostTable.objects.filter(Q(owner=self.request.user.id) | Q(private=0))
         else:
             return PostTable.objects.filter(private=0)
+
 def search(request):
     if request.method == 'GET':
         post_content = request.GET.get('q')
         queryset = PostTable.objects.annotate(search=SearchVector('title','pasteContent')).filter(search=post_content)
-        user = User.objects.annotate(search=SearchVector('id')).filter(search=queryset)
-        context = {'post': queryset, 'user':user}
+    #    user = User.objects.annotate(search=SearchVector('id')).filter(search=queryset)
+        context = {'post': queryset}
         return render(request, 'webpages/search.html', context)
     else:
-        context = {}
-        return render(request, 'webpages/search.html', context)
+        return render(request, 'webpages/search.html', {})
