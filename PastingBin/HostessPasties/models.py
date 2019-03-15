@@ -7,23 +7,25 @@ from django.utils.crypto import get_random_string
 from django.contrib.postgres.search import SearchVectorField
 from django.contrib.auth.models import User
 from django.db import IntegrityError
+# Requires pip install django-fernet-fields
 from fernet_fields import EncryptedTextField
-# Create your models here.
-
+#Posttable model
 class PostTable(models.Model):
+    #id of the post is a random 8 character string and is the primary key
     postID = models.CharField(max_length=8, primary_key=True, help_text="Unique ID for this post")
+    #title field
     title =  models.CharField(max_length=100)
+    #post expiry field date
     expiry = models.DateField(default=datetime.date.today)
+    #owner field should be the same as user id
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    #many users can share many posts, creates a table with link between user and post id
     postshares = models.ManyToManyField(User, blank=True, related_name='postshares')
+    #checks if post is private 
     private = models.BooleanField(default=0)
+    #enrypts content
     pasteContent = EncryptedTextField(default='')
-
-    def get(self, request, *args, **kwargs):
-        file = self.get_object()
-        content = file.render_text_content()
-        return HttpResponse(content, content_type='text/plain; charset=utf8')
-
+    #allows to make posts without overwriting
     def save(self, *args, **kwargs):
         if not self.postID:
             self.postID = get_random_string(8)
