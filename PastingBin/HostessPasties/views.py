@@ -1,6 +1,7 @@
 #views.py
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+import os
+from django.http import HttpResponse, Http404
 from .forms import AccountCreation
 from .forms import PostCreation
 from .models import PostTable
@@ -141,8 +142,18 @@ def search(request):
     if request.method == 'GET':
         post_content = request.GET.get('q')
         queryset = PostTable.objects.annotate(search=SearchVector('title','pasteContent')).filter(search=post_content)
-    #    user = User.objects.annotate(search=SearchVector('id')).filter(search=queryset)
         context = {'post': queryset}
         return render(request, 'webpages/search.html', context)
     else:
         return render(request, 'webpages/search.html', {})
+
+
+def download(request, postID):
+
+    filename = PostTable.objects.filter(postID = postID).values('title')[0]
+    queryset = PostTable.objects.filter(postID = postID).values('pasteContent')[0]
+    fname = filename.get('title')
+    content = queryset.get('pasteContent')
+    response = HttpResponse(content, content_type='text/html charset=utf-8')
+    response['Content-Disposition'] = 'attachment; filename= "{}.txt"'.format(fname)
+    return response

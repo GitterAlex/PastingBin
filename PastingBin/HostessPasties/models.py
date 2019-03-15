@@ -17,5 +17,10 @@ class PostTable(models.Model):
     private = models.BooleanField(default=0)
     pasteContent = models.CharField(max_length=2000)
 
+    def get(self, request, *args, **kwargs):
+        file = self.get_object()
+        content = file.render_text_content()
+        return HttpResponse(content, content_type='text/plain; charset=utf8')
+        
     def __str__(self):
         return self.title
