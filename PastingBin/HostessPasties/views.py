@@ -147,7 +147,6 @@ def search(request):
     else:
         return render(request, 'webpages/search.html', {})
 
-<<<<<<< HEAD
 
 def download(request, postID):
 
@@ -158,7 +157,6 @@ def download(request, postID):
     response = HttpResponse(content, content_type='text/html charset=utf-8')
     response['Content-Disposition'] = 'attachment; filename= "{}.txt"'.format(fname)
     return response
-=======
 def shared(request):
     if request.user.is_authenticated:
         sharedposts = PostTable.objects.filter(postshares=request.user.id)
@@ -166,4 +164,3 @@ def shared(request):
         return render(request, 'webpages/post_shares.html', context)
     else:
         return redirect('/HostessPasties/')
->>>>>>> 664979d9389220238b7e86fe467deafcb784ce1f
