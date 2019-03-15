@@ -14,11 +14,9 @@ class PostTable(models.Model):
     title =  models.CharField(max_length=100)
     expiry = models.DateField(default=datetime.date.today)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    #postshares = models.ManyToManyField(User, blank=True, related_name='postshares')
+    postshares = models.ManyToManyField(User, blank=True, related_name='postshares')
     private = models.BooleanField(default=0)
     pasteContent = models.CharField(max_length=2000)
-<<<<<<< HEAD
-=======
 
     def get(self, request, *args, **kwargs):
         file = self.get_object()
@@ -43,6 +41,5 @@ class PostTable(models.Model):
             else:
                 success = True
 
->>>>>>> d6810d0ae4307b3c1f164b6ad8304a912edb5dd5
     def __str__(self):
         return self.title

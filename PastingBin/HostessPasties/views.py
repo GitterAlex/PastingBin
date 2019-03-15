@@ -146,11 +146,7 @@ def search(request):
         return render(request, 'webpages/search.html', context)
     else:
         return render(request, 'webpages/search.html', {})
-
-<<<<<<< HEAD
-
-=======
->>>>>>> d6810d0ae4307b3c1f164b6ad8304a912edb5dd5
+        
 def download(request, postID):
 
     filename = PostTable.objects.filter(postID = postID).values('title')[0]
@@ -160,10 +156,7 @@ def download(request, postID):
     response = HttpResponse(content, content_type='text/html charset=utf-8')
     response['Content-Disposition'] = 'attachment; filename= "{}.txt"'.format(fname)
     return response
-<<<<<<< HEAD
-=======
 
->>>>>>> d6810d0ae4307b3c1f164b6ad8304a912edb5dd5
 def shared(request):
     if request.user.is_authenticated:
         sharedposts = PostTable.objects.filter(postshares=request.user.id)
