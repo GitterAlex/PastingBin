@@ -134,7 +134,7 @@ class PostView(DetailView):
 
     def get_queryset(self):
         if self.request.user.is_authenticated:
-            return PostTable.objects.filter(Q(owner=self.request.user.id) | Q(private=0))
+            return PostTable.objects.filter(Q(owner=self.request.user.id) | Q(private=0) | Q(postshares=self.request.user.id))
         else:
             return PostTable.objects.filter(private=0)
 
@@ -147,6 +147,7 @@ def search(request):
     else:
         return render(request, 'webpages/search.html', {})
 
+<<<<<<< HEAD
 
 def download(request, postID):
 
@@ -157,3 +158,12 @@ def download(request, postID):
     response = HttpResponse(content, content_type='text/html charset=utf-8')
     response['Content-Disposition'] = 'attachment; filename= "{}.txt"'.format(fname)
     return response
+=======
+def shared(request):
+    if request.user.is_authenticated:
+        sharedposts = PostTable.objects.filter(postshares=request.user.id)
+        context = {'sharedposts': sharedposts}
+        return render(request, 'webpages/post_shares.html', context)
+    else:
+        return redirect('/HostessPasties/')
+>>>>>>> 664979d9389220238b7e86fe467deafcb784ce1f

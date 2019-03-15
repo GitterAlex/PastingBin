@@ -19,4 +19,4 @@ class PostCreation(forms.ModelForm):
 
     class Meta:
         model = PostTable
-        fields = ('title','expiry','private','pasteContent')
+        fields = ('title','expiry','private','pasteContent','postshares')
