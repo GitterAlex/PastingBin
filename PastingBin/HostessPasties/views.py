@@ -82,7 +82,7 @@ def createaccount(request):
 
 class UserUpdate(UpdateView):
     model = User
-    fields = ['username', 'password', 'email', 'first_name', 'last_name']
+    fields = ['username', 'email', 'first_name', 'last_name']
     template_name = 'webpages/user_form.html'
     success_url = reverse_lazy('dashboard')
 
@@ -146,7 +146,7 @@ def search(request):
         return render(request, 'webpages/search.html', context)
     else:
         return render(request, 'webpages/search.html', {})
-        
+
 def download(request, postID):
 
     filename = PostTable.objects.filter(postID = postID).values('title')[0]
