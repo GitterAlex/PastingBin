@@ -133,7 +133,7 @@ class PostView(DetailView):
 
     def get_queryset(self):
         if self.request.user.is_authenticated:
-            return PostTable.objects.filter(Q(owner=self.request.user.id) | Q(private=0))
+            return PostTable.objects.filter(Q(owner=self.request.user.id) | Q(private=0) | Q(postshares=self.request.user.id))
         else:
             return PostTable.objects.filter(private=0)
 
@@ -141,8 +141,15 @@ def search(request):
     if request.method == 'GET':
         post_content = request.GET.get('q')
         queryset = PostTable.objects.annotate(search=SearchVector('title','pasteContent')).filter(search=post_content)
-    #    user = User.objects.annotate(search=SearchVector('id')).filter(search=queryset)
         context = {'post': queryset}
         return render(request, 'webpages/search.html', context)
     else:
         return render(request, 'webpages/search.html', {})
+
+def shared(request):
+    if request.user.is_authenticated:
+        sharedposts = PostTable.objects.filter(postshares=request.user.id)
+        context = {'sharedposts': sharedposts}
+        return render(request, 'webpages/post_shares.html', context)
+    else:
+        return redirect('/HostessPasties/')

@@ -13,7 +13,8 @@ urlpatterns = [
     path('createaccount/', views.createaccount),
     path('dashboard/', views.dashboard, name='dashboard'),
     path('change_password/', views.change_password, name='changepassword'),
-    path('search/', views.search, name='search')
+    path('search/', views.search, name='search'),
+    path('shared/', views.shared, name='shared')
 ]
 urlpatterns += [
     url(r'^update/', views.UserUpdate.as_view(), name='user_update'),

@@ -1,0 +1,13 @@
+{% extends "webpages/frontpage.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="jumbotron">
+    <h2 class="display-4">Your shared posts:</h2>
+    {% for post in sharedposts %}
+      <div class="col-md-4"><h5><a href="/HostessPasties/{{post.postID}}">{{ post.title }}</a></h5></div>
+      <hr>
+      {% endfor %}
+      </div>
+    </div>
+{% endblock content %}
