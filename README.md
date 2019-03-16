@@ -4,7 +4,8 @@ The premise of this project is to create a simplified pastebin clone. You will n
 - pip install django
 - pip install django-fernet-fields
 - Some form of email server for password reset
-
+Run with the following command:
+- python .\manage.py runserver_plus --cert certname
 
 ## Main functionality
 ### Visitor
