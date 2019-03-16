@@ -3,6 +3,7 @@ Secure Software Assignment 2. This isn't actively hosted, the database login and
 The premise of this project is to create a simplified pastebin clone. You will need to install the following:
 - pip install django
 - pip install django-fernet-fields
+- Some form of email server for password reset
 
 
 ## Main functionality
@@ -24,4 +25,3 @@ The premise of this project is to create a simplified pastebin clone. You will n
   - Share posts
   - Restrict post access
   - Delete their posts
-
