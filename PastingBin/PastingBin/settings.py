@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'HostessPasties.apps.HostesspastiesConfig'
+    'HostessPasties.apps.HostesspastiesConfig',
+    'django_extensions'
 ]
 
 MIDDLEWARE = [
