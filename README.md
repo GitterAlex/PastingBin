@@ -1,5 +1,4 @@
-													#Sam Campbell and Steven Reddy
-# PastingBin												     
+# PastingBin by Sam Campbell and Steven Reddy	 									     
 Secure Software Assignment 2. This isn't actively hosted, the database login and other credentials are simply samples provided, you can edit them accordingly to your own database credentials.
 The premise of this project is to create a simplified pastebin clone. You will need to install the following:
 - pip install django
