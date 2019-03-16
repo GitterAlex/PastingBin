@@ -23,6 +23,6 @@ Run with the following command:
   - User's own posts are displayed
   - Clicking on any post title brings user to viewing/editing
 - Users can create new posts
-  - Share posts
+  - Share posts (Ctrl + Click to select)
   - Restrict post access
   - Delete their posts
